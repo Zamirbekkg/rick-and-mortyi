@@ -1,0 +1,111 @@
+$background-color: #f9f9f9;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+$padding: 20px;
+$gap: 20px;
+
+body {
+  background-color: #000;
+}
+
+.characters-container {
+  padding: $padding;
+}
+
+
+.title {
+  text-align: center;
+  height: 100px;
+  font-size: 2em;
+  margin-bottom: $padding;
+  background-color: #000;
+  color: #f9f9f9;
+}
+
+.character-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gap;
+  justify-items: center;
+}
+
+.character-card {
+  background-color: $background-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: 2px 4px $shadow-color;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px $shadow-color;
+  }
+
+  .character-image-container {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+
+  .character-image {
+    width: 230px;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .character-info {
+    padding: 10px;
+
+    h2 {
+      margin: 10px 0;
+      font-size: 1.5em;
+    }
+
+    p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 1em;
+    }
+  }
+}
+
+@media screen and (max-width:1140px) {
+  .character-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .character-info {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .character-card {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 3fr;
+  }
+  .character-image{
+    display: grid;
+  }
+
+  .character-info {
+    display: grid;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .character-image {
+    animation: character-image-spin infinite 20s linear;
+  }
+}
